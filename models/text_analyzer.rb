@@ -19,18 +19,18 @@ class TextAnalyzer
   end
 
   def most_used_letter
-    s1 = text.gsub(/[^a-z]/, '') # gets rid of spaces
-    arr = s1.split('')
-    arr1 = arr.uniq
-    arr2 = {}
+    #s1 = text.gsub(/[^a-z]/, '') # gets rid of spaces
+    full_string = text.gsub(/[^a-z]/, '').split('')
+    letters = full_string.uniq
+    letters_and_count = {}
 
-    arr1.map do |c|
-      arr2[c] =  arr.count(c)
+    letters.map do |letter|
+      letters_and_count[letter] =  full_string.count(letter)
     end
 
-    biggest = { arr2.keys.first => arr2.values.first }
+    biggest = { letters_and_count.keys.first => letters_and_count.values.first }
 
-    arr2.each do |key, value|
+    letters_and_count.each do |key, value|
       if value > biggest.values.first
         biggest = {}
         biggest[key] = value
